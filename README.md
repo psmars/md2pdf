@@ -1,8 +1,8 @@
 # md2pdf
 
-Provide a self-contained environment to work with texts, based on markdown, latex, git.
+Provides a self-contained environment to work with texts, based on markdown, latex, pandoc, git. `make` is also included to facilitate automation.
 
-Start the environment with:
+Create a directory for your project data: \<your_directory\>. Start the environment with:
 
 `docker run --rm -it --hostname docker -v <your_directory>:/root absps/md2pdf`
 
