@@ -1,4 +1,4 @@
-FROM absps/debian:latest
+FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
 LABEL tw.edu.yuntech.smars.version="0.3" \
       tw.edu.yuntech.smars.release-date="2020-01-18"
