@@ -1,7 +1,7 @@
 FROM absps/debian:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.2-beta" \
-      tw.edu.yuntech.smars.release-date="2020-01-15"
+LABEL tw.edu.yuntech.smars.version="0.3" \
+      tw.edu.yuntech.smars.release-date="2020-01-18"
 USER root
 RUN apt-get update && \
 	apt-get install -y \
@@ -11,8 +11,9 @@ RUN apt-get update && \
 	texlive-fonts-extra \
 	fonts-arphic-ukai \
 	fonts-arphic-uming \
-	ghostscript
+	ghostscript \
+	nano \
+	pdftk
 
 COPY examples /root/
 
-#RUN apt-get install -y pdftk
