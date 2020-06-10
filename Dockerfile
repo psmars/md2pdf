@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.3" \
-      tw.edu.yuntech.smars.release-date="2020-01-18"
+LABEL tw.edu.yuntech.smars.version="0.4" \
+      tw.edu.yuntech.smars.release-date="2020-06-10"
 USER root
 RUN apt-get update && \
 	apt-get install -y \
@@ -15,7 +15,7 @@ RUN apt-get update && \
 	nano \
 	pdftk
 
-RUN git clone git@github.com:psmars/dissertation.git
-
 COPY examples /root/
+
+COPY dissertation /root/
 
