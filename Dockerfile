@@ -15,5 +15,7 @@ RUN apt-get update && \
 	nano \
 	pdftk
 
+RUN git clone git@github.com:psmars/dissertation.git
+
 COPY examples /root/
 
