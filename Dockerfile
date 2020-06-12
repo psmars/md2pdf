@@ -16,7 +16,6 @@ RUN apt-get update && \
 	pdftk
 
 COPY examples /usr/share/absps/examples
-COPY dissertation /usr/share/absps/dissertation
 
 RUN chmod 0700 /usr/share/absps/config/install_md2pdf
 
