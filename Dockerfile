@@ -1,6 +1,6 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.7" \
+LABEL tw.edu.yuntech.smars.version="0.8" \
       tw.edu.yuntech.smars.release-date="2020-06-12"
 USER root
 RUN apt-get update && \
@@ -17,13 +17,12 @@ RUN apt-get update && \
 
 COPY examples /usr/share/absps/examples
 COPY dissertation /usr/share/absps/dissertation
-COPY config/install_md2pdf /usr/share/absps/config/install_md2pdf
 
 RUN chmod 0700 /usr/share/absps/config/install_md2pdf
-RUN /usr/share/absps/config/install
-RUN /usr/share/absps/config/install_md2pdf
 
 WORKDIR /root
 
-CMD /usr/bin/zsh
+CMD /usr/share/absps/config/install && \
+	/usr/share/absps/config/install_md2pdf && \
+	/usr/bin/zsh
 
