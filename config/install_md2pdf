@@ -1,0 +1,7 @@
+#!/bin/zsh
+if [ ! -d /root/examples ]; then
+	cp -r /usr/share/absps/examples /root/
+fi
+if [ ! -d /root/disseration ]; then
+	cp -r /usr/share/absps/dissertation /root/
+fi

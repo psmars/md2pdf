@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.5" \
-      tw.edu.yuntech.smars.release-date="2020-06-11"
+LABEL tw.edu.yuntech.smars.version="0.6" \
+      tw.edu.yuntech.smars.release-date="2020-06-12"
 USER root
 RUN apt-get update && \
 	apt-get install -y \
@@ -15,7 +15,14 @@ RUN apt-get update && \
 	nano \
 	pdftk
 
-COPY examples /root/examples
+COPY examples /usr/share/absps/examples
+COPY dissertation /usr/share/absps/dissertation
+COPY config/install_md2pdf /usr/share/absps/config/install_md2pdf
 
-COPY dissertation /root/dissertation
+RUN chmod 0700 /usr/share/absps/config/install_md2pdf
+
+WORKDIR /root
+
+CMD /usr/share/absps/config/install_md2pdf && \
+	/usr/bin/zsh
 
