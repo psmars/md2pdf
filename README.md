@@ -17,6 +17,7 @@ If needed, create your ssh credentials (they will be saved in \<your_directory\>
 If needed, create your git global configuration.
 
 `git config --global user.name "Your Name"`
+
 `git config --global user.email "you@server"`
 
 Start to work.
