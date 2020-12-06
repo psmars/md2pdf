@@ -6,13 +6,18 @@ Create a directory for your project data: \<your_directory\>. Start the environm
 
 `docker run --rm -it --hostname docker -v <your_directory>:/root absps/md2pdf`
 
-Or, if you do not like vim and prefer nano
+Or, if you do not like vim and prefer micro
 
-`docker run --rm -it --hostname docker -v <your_directory>:/root -e EDITOR=nano absps/md2pdf`
+`docker run --rm -it --hostname docker -v <your_directory>:/root -e EDITOR=micro absps/md2pdf`
 
 If needed, create your ssh credentials (they will be saved in \<your_directory\>).
 
+> ssh-keygen -t rsa -b 4096
+
 If needed, create your git global configuration.
+
+> git config --global user.name "Your Name"
+> git config --global user.email "you@server"
 
 Start to work.
 
