@@ -6,9 +6,9 @@ Create a directory for your project data: \<your_directory\>. Start the environm
 
 `docker run --rm -it --hostname docker -v <your_directory>:/root absps/md2pdf`
 
-Or, if you do not like vim and prefer micro
+Or, if you do not like vim and prefer nano
 
-`docker run --rm -it --hostname docker -v <your_directory>:/root -e EDITOR=micro absps/md2pdf`
+`docker run --rm -it --hostname docker -v <your_directory>:/root -e EDITOR=nano absps/md2pdf`
 
 If needed, create your ssh credentials (they will be saved in \<your_directory\>).
 

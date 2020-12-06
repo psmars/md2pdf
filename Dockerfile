@@ -12,7 +12,7 @@ RUN apt-get update && \
 	fonts-arphic-ukai \
 	fonts-arphic-uming \
 	ghostscript \
-	micro \
+	nano \
 	zlib1g-dev \
 	pdftk
 
