@@ -12,12 +12,12 @@ Or, if you do not like vim and prefer nano
 
 If needed, create your ssh credentials (they will be saved in \<your_directory\>).
 
-> ssh-keygen -t rsa -b 4096
+`ssh-keygen -t rsa -b 4096`
 
 If needed, create your git global configuration.
 
-> git config --global user.name "Your Name"
-> git config --global user.email "you@server"
+`git config --global user.name "Your Name"`
+`git config --global user.email "you@server"`
 
 Start to work.
 
