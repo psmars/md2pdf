@@ -28,7 +28,7 @@ RUN cabal update && \
 	cabal install pandoc-crossref
 
 RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
-	mv /root/.cabal/bin/pandoc-cteproc /usr/local/bin/ && \
+	mv /root/.cabal/bin/pandoc-citeproc /usr/local/bin/ && \
 	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
 	git config --global filter.lfs.required true && \
 	git config --global filter.lfs.clean "git-lfs clean -- %f" && \
