@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.9" \
-      tw.edu.yuntech.smars.release-date="2020-12-06"
+LABEL tw.edu.yuntech.smars.version="0.10" \
+      tw.edu.yuntech.smars.release-date="2020-12-07"
 USER root
 RUN apt-get update && \
 	apt-get install -y \
@@ -35,10 +35,12 @@ RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
 	git config --global filter.lfs.smudge "git-lfs smudge -- %f" && \
 	git config --global filter.lfs.process "git-lfs filter-process"
 
-#	rm -rf /root/.cabal && \
-#	apt-get remove -y cabal-install && \
-#	apt-get remove -y cpp && \
-#	apt autoremove -y && \
+RUN mkdir /usr/local/share/cabal && \ 
+	mv /root/.cabal/share /usr/local/share/cabal/ && \	
+	rm -rf /root/.cabal && \
+	apt-get remove -y cabal-install && \
+	apt-get remove -y cpp && \
+	apt autoremove -y && \
 
 WORKDIR /root
 

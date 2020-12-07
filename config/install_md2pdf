@@ -2,3 +2,6 @@
 if [ ! -d /root/examples ]; then
 	cp -r /usr/share/absps/examples /root/
 fi
+if [ ! -d /root/.cabal ]; then
+	cp -r /usr/local/share/cabal /root/.cabal
+fi
