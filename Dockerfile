@@ -35,10 +35,13 @@ RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
 	git config --global filter.lfs.smudge "git-lfs smudge -- %f" && \
 	git config --global filter.lfs.process "git-lfs filter-process"
 
-RUN mkdir /usr/local/share/cabal && \ 
-	mv /root/.cabal/share /usr/local/share/cabal/ && \	
-	rm -rf /root/.cabal && \
-	apt-get remove -y cabal-install && \
+RUN mkdir /usr/local/share/cabal
+
+RUN	mv /root/.cabal/share /usr/local/share/cabal/
+
+RUN	rm -rf /root/.cabal
+
+RUN	apt-get remove -y cabal-install && \
 	apt-get remove -y cpp && \
 	apt autoremove -y && \
 
