@@ -43,7 +43,7 @@ RUN	rm -rf /root/.cabal
 
 RUN	apt-get remove -y cabal-install && \
 	apt-get remove -y cpp && \
-	apt autoremove -y && \
+	apt autoremove -y
 
 WORKDIR /root
 
