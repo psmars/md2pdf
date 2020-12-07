@@ -23,10 +23,12 @@ COPY config/install_md2pdf /usr/share/absps/config/install_md2pdf
 RUN chmod 0700 /usr/share/absps/config/install_md2pdf
 
 RUN cabal update && \
-	cabal install pandoc-crossref && \
-	cabal install pandoc-citeproc
+	cabal install pandoc-2.10 && \
+	cabal install pandoc-citeproc && \
+	cabal install pandoc-crossref
 
 RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
+	mv /root/.cabal/bin/pandoc-cteproc /usr/local/bin/ && \
 	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
 	git config --global filter.lfs.required true && \
 	git config --global filter.lfs.clean "git-lfs clean -- %f" && \
