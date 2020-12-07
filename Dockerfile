@@ -26,7 +26,9 @@ RUN cabal update && \
 	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
 	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
 	rm -rf /root/.cabal && \
-	apt-get remove cabal-install && \
+	apt-get remove -y cabal-install && \
+	apt-get remove -y cpp && \
+	apt autoremove -y && \
 	git config --global filter.lfs.required true && \
 	git config --global filter.lfs.clean "git-lfs clean -- %f" && \
 	git config --global filter.lfs.smudge "git-lfs smudge -- %f" && \
