@@ -12,6 +12,7 @@ RUN apt-get update && \
 	fonts-arphic-ukai \
 	fonts-arphic-uming \
 	ghostscript \
+	libatomic1 \
 	nano \
 	zlib1g-dev \
 	pdftk
@@ -23,7 +24,9 @@ RUN chmod 0700 /usr/share/absps/config/install_md2pdf
 
 RUN cabal update && \
 	cabal install pandoc-crossref && \
-	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
+	cabal install pandoc-citeproc
+
+RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
 	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
 	rm -rf /root/.cabal && \
 	apt-get remove -y cabal-install && \
