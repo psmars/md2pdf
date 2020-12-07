@@ -23,7 +23,10 @@ RUN chmod 0700 /usr/share/absps/config/install_md2pdf
 
 RUN cabal update && \
 	cabal install pandoc-crossref && \
-	echo "export PATH=\$PATH:/root/.cabal/bin" >> /usr/share/absps/config/.zshrc && \
+	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
+	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
+	rm -rf /root/.cabal && \
+	apt-get remove cabal-install && \
 	git config --global filter.lfs.required true && \
 	git config --global filter.lfs.clean "git-lfs clean -- %f" && \
 	git config --global filter.lfs.smudge "git-lfs smudge -- %f" && \
