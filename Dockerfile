@@ -1,16 +1,19 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.10" \
-      tw.edu.yuntech.smars.release-date="2020-12-07"
+LABEL tw.edu.yuntech.smars.version="0.11" \
+      tw.edu.yuntech.smars.release-date="2020-12-08"
 USER root
+
+# install software available in debian repository
+# texlive fonts take a lot of space (33% of the installation) !! Maybe you do not need them all
 RUN apt-get update && \
 	apt-get install -y \
 	git-lfs \
 	texlive-xetex \
-	cabal-install \
 	texlive-fonts-extra \
 	fonts-arphic-ukai \
 	fonts-arphic-uming \
+	cabal-install \
 	ghostscript \
 	libatomic1 \
 	nano \
@@ -22,28 +25,28 @@ COPY config/install_md2pdf /usr/share/absps/config/install_md2pdf
 
 RUN chmod 0700 /usr/share/absps/config/install_md2pdf
 
+# pandoc and pandoc tools installation
 RUN cabal update && \
 	cabal install pandoc-2.10 && \
 	cabal install pandoc-citeproc && \
 	cabal install pandoc-crossref
 
+# cleaning pandoc and pandoc tools installation
 RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
 	mv /root/.cabal/bin/pandoc-citeproc /usr/local/bin/ && \
 	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
-	git config --global filter.lfs.required true && \
+	mkdir /usr/local/share/cabal && \
+	mv /root/.cabal/share /usr/local/share/cabal/ && \
+	rm -rf /root/.cabal && \
+	apt-get remove -y cabal-install && \
+	apt-get remove -y cpp && \
+	apt autoremove -y
+
+# git basic configuration
+RUN	git config --global filter.lfs.required true && \
 	git config --global filter.lfs.clean "git-lfs clean -- %f" && \
 	git config --global filter.lfs.smudge "git-lfs smudge -- %f" && \
 	git config --global filter.lfs.process "git-lfs filter-process"
-
-RUN mkdir /usr/local/share/cabal
-
-RUN	mv /root/.cabal/share /usr/local/share/cabal/
-
-RUN	rm -rf /root/.cabal
-
-RUN	apt-get remove -y cabal-install && \
-	apt-get remove -y cpp && \
-	apt autoremove -y
 
 WORKDIR /root
 
