@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.11" \
-      tw.edu.yuntech.smars.release-date="2020-12-08"
+LABEL tw.edu.yuntech.smars.version="0.12" \
+      tw.edu.yuntech.smars.release-date="2022-03-18"
 USER root
 
 # install software available in debian repository
