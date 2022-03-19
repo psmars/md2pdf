@@ -6,3 +6,7 @@ run:
 
 push:
 	docker push absps/md2pdf
+
+clean:
+	rm -rf *~
+
