@@ -11,6 +11,7 @@ RUN apt-get update && \
 	git-lfs \
 	texlive-xetex \
 	texlive-fonts-extra \
+	texlive-lang-cjk \
 	fonts-arphic-ukai \
 	fonts-arphic-uming \
 	cabal-install \
