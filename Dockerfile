@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.12" \
-      tw.edu.yuntech.smars.release-date="2022-03-18"
+LABEL tw.edu.yuntech.smars.version="0.13" \
+      tw.edu.yuntech.smars.release-date="2022-03-19"
 USER root
 
 # install software available in debian repository
@@ -32,12 +32,10 @@ RUN cabal update && \
 	cabal install pandoc-crossref
 
 # cleaning pandoc and pandoc tools installation
-RUN	mv /root/.cabal/bin/pandoc /usr/local/bin/ && \
-	mv /root/.cabal/bin/pandoc-citeproc /usr/local/bin/ && \
-	mv /root/.cabal/bin/pandoc-crossref /usr/local/bin/ && \
+RUN	ln -s $(readlink -f /root/.cabal/bin/pandoc) /usr/local/bin/ && \
+	ln -s $(readlink -f /root/.cabal/bin/pandoc-citeproc) /usr/local/bin/ && \
+	ln -s $(readlink -f /root/.cabal/bin/pandoc-crossref) /usr/local/bin/ && \
 	mkdir /usr/local/share/cabal && \
-	mv /root/.cabal/share /usr/local/share/cabal/ && \
-	rm -rf /root/.cabal && \
 	apt-get remove -y cabal-install && \
 	apt-get remove -y cpp && \
 	apt autoremove -y
